@@ -90,7 +90,7 @@ The following plots summarize the learning progress of the PPO agent during trai
 
 ## Reward Per Episode During Training
 
-![Reward Curve](graphs/reward_plot.png)
+![Reward Curve](Graphs/reward_plot.png)
 
 The reward curve demonstrates a clear upward trend throughout training. While reinforcement learning naturally exhibits variability between episodes, the smoothed moving average shows that the PPO agent consistently improved its policy over time.
 
@@ -98,7 +98,7 @@ The reward curve demonstrates a clear upward trend throughout training. While re
 
 ## Survival Time During Training
 
-![Survival Time](graphs/survival_plot.png)
+![Survival Time](Graphs/survival_plot.png)
 
 The survival-time curve shows that the agent remained alive for progressively longer periods as training continued. This indicates that the learned policy became increasingly effective at avoiding collisions while successfully navigating toward food.
 
