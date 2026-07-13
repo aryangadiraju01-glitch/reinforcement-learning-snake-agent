@@ -1,50 +1,126 @@
-# SnakeRL
+# Reinforcement Learning Snake Agent
 
-A reinforcement learning agent trained to play Snake, built from scratch as part of an undergraduate research project on how agents learn.
+An undergraduate research project investigating how reinforcement learning agents learn to play Snake using **Proximal Policy Optimization (PPO)**.
 
-## Overview
+This project was completed as part of the **CRA UR2PhD Undergraduate Research Program** at UNC Charlotte.
 
-This project explores how a reinforcement learning agent develops strategy over time. Rather than optimizing purely for high scores, the goal was to understand the learning process itself: how an agent's behavior evolves as it trains, and how changes to its environment affect that evolution.
+---
 
-To do this, I built the Snake game as a custom [Gymnasium](https://gymnasium.farama.org/) environment from scratch, then trained a Proximal Policy Optimization (PPO) agent on it using Stable-Baselines3. Training data was logged and visualized across multiple runs to study the agent's learning curve.
+# Overview
 
-## How It Works
+The objective of this research was to investigate how a reinforcement learning agent develops strategies over time while playing Snake. Rather than focusing solely on maximizing the final score, the project explored how different reward structures and environment configurations influence the learning process.
 
-**Environment (snake_env.py)**
-- 20x20 grid, implemented as a custom Gymnasium environment
-- **Action space:** 3 discrete actions — go straight, turn right, turn left (relative to the snake's current direction)
-- **Observation space:** an 11-value vector describing the snake's immediate surroundings — danger detection (straight/left/right), current movement direction, and the food's relative position
-- **Reward shaping:** +10 for eating food, -10 for dying (wall or self-collision), and a small +1/-1 shaping reward based on whether the snake moved closer to or farther from the food
+A custom Snake environment was developed using **Gymnasium**, and a **PPO (Proximal Policy Optimization)** agent from **Stable-Baselines3** was trained across multiple experiments. Training performance was evaluated through quantitative metrics and visualizations to better understand the agent's behavior throughout learning.
 
-**Training (train.py)**
-- Trains a PPO agent (Stable-Baselines3, `MlpPolicy`) for 1,000,000 timesteps
-- Wraps the environment in a `Monitor` to log episode rewards and lengths during training
+---
 
-**Evaluation & Visualization (evaluate.py, plot.py, watch.py)**
-- `evaluate.py` runs the trained model and measures performance
-- `plot.py` graphs training data (reward/score over time) from the training logs
-- `watch.py` renders a trained agent playing in real time using Pygame, so you can visually inspect its behavior
+# Research Objectives
 
-**Manual testing (test_env.py)**
-- Lets you step through the environment manually to verify game logic before training
+- Train a reinforcement learning agent to play Snake.
+- Evaluate how reward shaping influences learning.
+- Analyze agent performance across multiple training runs.
+- Visualize learning progress using experimental data.
+- Investigate the strengths and limitations of PPO in a custom environment.
 
-## Tech Stack
+---
 
-Python, [Gymnasium](https://gymnasium.farama.org/), [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) (PPO), NumPy, Pygame (rendering), Matplotlib (training plots)
+# Repository Structure
 
-## Running It
+```text
+RL-Snake-Agent/
 
-**Install dependencies**
-- pip install gymnasium stable-baselines3 pygame numpy matplotlib
+├── snake_env.py      # Custom Gymnasium Snake environment
+├── train.py          # PPO training script
+├── evaluate.py       # Model evaluation
+├── watch.py          # Watch the trained agent play
+├── plot.py           # Generate training graphs
+├── test_env.py       # Manual environment testing
+├── graphs/           # Experimental results and figures
+└── README.md
+```
 
-**Train the agent (1,000,000 timesteps)**
-- python train.py
+---
 
-**Watch the trained agent play**
-- python watch.py
+# Environment
 
-**Evaluate performance**
-- python evaluate.py
+The Snake game was implemented as a custom Gymnasium environment featuring:
 
-**Plot training progress**
-- python plot.py
+- 20 × 20 playing grid
+- Relative action space
+  - Move Straight
+  - Turn Left
+  - Turn Right
+- 11-dimensional observation space describing:
+  - Immediate danger
+  - Current movement direction
+  - Relative food location
+- Reward shaping encouraging efficient movement toward food while penalizing collisions and poor movement.
+
+---
+
+# Training
+
+The reinforcement learning agent was trained using:
+
+- Stable-Baselines3
+- PPO (Proximal Policy Optimization)
+- MlpPolicy neural network
+- 1,000,000 training timesteps
+
+Training statistics were recorded using Gymnasium's Monitor wrapper and later analyzed using custom plotting scripts.
+
+---
+
+# Evaluation
+
+The repository includes tools for:
+
+- Evaluating trained models
+- Visualizing reward curves
+- Inspecting agent gameplay
+- Comparing experimental configurations
+
+---
+
+# Technologies
+
+- Python
+- Gymnasium
+- Stable-Baselines3
+- NumPy
+- Matplotlib
+- Pygame
+
+---
+
+# My Contributions
+
+As an undergraduate researcher, my primary responsibilities included:
+
+- Designing reinforcement learning experiments
+- Modifying reward functions and evaluation parameters
+- Training and evaluating PPO agents
+- Collecting experimental performance metrics
+- Creating graphs and visualizations
+- Interpreting experimental results
+- Co-authoring the research paper and presentation
+
+---
+
+# Collaborator Contributions
+
+The project was completed collaboratively.
+
+Major contributions from my research partner included:
+
+- Designing the custom Snake Gymnasium environment
+- Implementing the reinforcement learning framework
+- Developing the PPO training pipeline
+
+---
+
+# Acknowledgements
+
+This project was completed as part of undergraduate research at **UNC Charlotte** through the **CRA UR2PhD Undergraduate Research Program**.
+
+Special thanks to my research partner and faculty mentor for their guidance and collaboration throughout the project.
