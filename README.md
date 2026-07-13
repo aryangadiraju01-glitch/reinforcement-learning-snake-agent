@@ -82,6 +82,45 @@ The repository includes tools for:
 
 ---
 
+---
+
+# Experimental Results
+
+The following plots summarize the learning progress of the PPO agent during training.
+
+## Reward Per Episode During Training
+
+![Reward Curve](graphs/reward_plot.png)
+
+The reward curve demonstrates a clear upward trend throughout training. While reinforcement learning naturally exhibits variability between episodes, the smoothed moving average shows that the PPO agent consistently improved its policy over time.
+
+---
+
+## Survival Time During Training
+
+![Survival Time](graphs/survival_plot.png)
+
+The survival-time curve shows that the agent remained alive for progressively longer periods as training continued. This indicates that the learned policy became increasingly effective at avoiding collisions while successfully navigating toward food.
+
+---
+
+## Experimental Summary
+
+| Experiment | Average Score | Average Survival | Maximum Score | Observation |
+|------------|--------------:|-----------------:|--------------:|-------------|
+| Baseline (20×20, shaped rewards) | 17.42 | 306.12 | 47 | Stable baseline performance |
+| Simple reward structure | 19.14 | 353.68 | — | Higher performance with lower variance |
+| Smaller grid (10×10) | 14.37 | 151.76 | — | Faster but more constrained learning |
+
+---
+
+## Key Findings
+
+- Simpler reward structures produced more stable learning behavior.
+- Reward shaping significantly influenced both convergence speed and overall performance.
+- Smaller environments accelerated learning but limited long-term performance.
+- Evaluating reinforcement learning agents requires multiple performance metrics rather than relying solely on the final score.
+
 # Technologies
 
 - Python
